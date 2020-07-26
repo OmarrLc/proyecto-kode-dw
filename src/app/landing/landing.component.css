@@ -1,0 +1,101 @@
+.navbar {
+    box-shadow: 2px 2px 5px;
+    opacity: 0.9;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+}
+
+.navbar .nav-item .nav-link {
+    color: #0092ca;
+}
+
+.navbar .nav-item .nav-link:hover {
+    color: #fff;
+}
+
+.main-header {
+    position: relative;
+    background-size: cover;
+    min-height: 700px;
+}
+
+.background-overlay {
+    background: rgba(48, 51, 107);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.form-control,
+.btn {
+    border-radius: 0;
+}
+
+.team,
+footer {
+    background: #222831;
+}
+
+.bg-dark {
+    background-color: #222831!important;
+}
+
+.header {
+    background-image: url('../../assets/images/portada4-min.jpg')!important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    height: 100%;
+}
+
+.logoHeader {
+    width: 60px;
+    height: 30px;
+    margin-right: 0.5em;
+}
+
+.titulo {
+    margin-top: 4em!important;
+}
+
+.descripcion {
+    font-weight: 600;
+    color: white;
+}
+
+.descripcion2 {
+    font-weight: 600;
+    color: #222831;
+    font-size: 2em;
+}
+
+.btn {
+    font-weight: 600;
+}
+
+.btn-outline-light:hover {
+    color: #0092ca;
+}
+
+.logoF {
+    font-size: 13em;
+}
+
+.plan {
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.plan:hover {
+    border-radius: 10px;
+    background-color: #0092ca;
+    color: #fff;
+    cursor: pointer;
+}
+
+.logoPlan {
+    font-size: 3em;
+}

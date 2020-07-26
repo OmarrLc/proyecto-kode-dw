@@ -1,0 +1,116 @@
+/*
+Template Name: Admin pro Admin
+Author: Wrappixel
+Email: niravjoshi87@gmail.com
+File: scss
+*/
+
+
+/*
+ NamAuthor: Wrappixel
+    Email: niravjoshi87@gmail.com
+  File: scss  
+  */
+
+
+/*Theme Colors*/
+
+
+/*bootstrap Color*/
+
+
+/*Light colors*/
+
+
+/*Normal Color*/
+
+
+/*Extra Variable*/
+
+
+/*******************
+Login register and r    ecover password Page
+    ******************/
+
+.login-register {
+    background-image: url('../../assets/images/portada4-min.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+}
+
+.login-box {
+    width: 40%;
+    margin: 0 auto;
+    border-radius: 10px;
+    background-color: #ffffffd6;
+    margin-top: 7%;
+}
+
+@media screen and (min-width: 1600px) {
+    .login-box {
+        width: 50%;
+        margin: 0 auto;
+        margin-top: 20%;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .login-box {
+        width: 70%;
+        margin: 0 auto;
+        margin-top: 5%;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .login-box {
+        width: 90%;
+        margin: 0 auto;
+    }
+}
+
+.login-box .footer {
+    width: 100%;
+    left: 0px;
+    right: 0px;
+}
+
+.login-box .social {
+    display: block;
+    margin-bottom: 30px;
+}
+
+#recoverform {
+    display: none;
+}
+
+.login-sidebar {
+    padding: 0px;
+    margin-top: 0px;
+}
+
+.login-sidebar .login-box {
+    right: 0px;
+    position: absolute;
+    height: 100%;
+}
+
+.form-group {
+    padding: 0 2em!important;
+}
+
+.box-title {
+    text-align: center!important;
+    color: #0092ca;
+}
+
+.form-control {
+    padding: 1em;
+    border-radius: 5px;
+    font-size: 1em;
+}
