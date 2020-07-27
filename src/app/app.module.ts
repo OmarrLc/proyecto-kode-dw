@@ -14,6 +14,8 @@ import { BreadCrumbsComponent } from './shared/bread-crumbs/bread-crumbs.compone
 import { PagesComponent } from './pages/pages.component';
 import { LandingComponent } from './landing/landing.component';
 import { RegistroComponent } from './registro/registro.component';
+import { PlanesComponent } from './registro/planes.component';
+import { CodemirrorModule } from '@ctrl/ngx-codemirror';
 
 @NgModule({
   declarations: [
@@ -28,11 +30,13 @@ import { RegistroComponent } from './registro/registro.component';
     BreadCrumbsComponent,
     PagesComponent,
     LandingComponent,
-    RegistroComponent
+    RegistroComponent,
+    PlanesComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CodemirrorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

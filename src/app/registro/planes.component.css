@@ -1,0 +1,34 @@
+.team {
+    height: 100vh;
+    background-image: url('../../assets/images/portada4-min.jpg')!important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    height: 100%;
+}
+
+.bg-dark,
+footer {
+    background-color: #222831!important;
+}
+
+.logoF {
+    font-size: 13em;
+}
+
+.plan {
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.plan:hover {
+    border-radius: 10px;
+    background-color: #0092ca;
+    color: #fff;
+    cursor: pointer;
+}
+
+.logoPlan {
+    font-size: 3em;
+}
