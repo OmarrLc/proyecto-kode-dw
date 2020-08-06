@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule } from '@angular/forms';
+import { CodeEditorModule } from '@ngstack/code-editor';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -16,6 +17,9 @@ import { LandingComponent } from './landing/landing.component';
 import { RegistroComponent } from './registro/registro.component';
 import { PlanesComponent } from './registro/planes.component';
 import { CodemirrorModule } from '@ctrl/ngx-codemirror';
+import { CssComponent } from './pages/home/css.component';
+
+
 
 @NgModule({
   declarations: [
@@ -31,12 +35,16 @@ import { CodemirrorModule } from '@ctrl/ngx-codemirror';
     PagesComponent,
     LandingComponent,
     RegistroComponent,
-    PlanesComponent
+    PlanesComponent,
+    CssComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CodemirrorModule
+    CodemirrorModule,
+    FormsModule,
+    CodeEditorModule.forRoot()
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
