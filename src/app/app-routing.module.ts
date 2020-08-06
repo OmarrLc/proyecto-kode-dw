@@ -8,22 +8,26 @@ import { NoPageFoundComponent } from './no-page-found/no-page-found.component';
 import { PlanesComponent } from './registro/planes.component';
 import { LandingComponent } from './landing/landing.component';
 import { RegistroComponent } from './registro/registro.component';
+import { HomeComponent } from './pages/home/home.component';
 
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'index',
     component: LandingComponent
   },
   {
-    path:'dashboard',
+    path:'',
     component: PagesComponent,
     children:[
       {
-        path:'', component: DashBoardComponent
+        path:'dash', component:  DashBoardComponent 
       },
       {
-        path: '', redirectTo: '/' ,pathMatch:'full'
+        path: 'home', component: HomeComponent
+      },
+      {
+        path: '', redirectTo: '/index' ,pathMatch:'full'
       }
       
     ]
