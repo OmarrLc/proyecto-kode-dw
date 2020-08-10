@@ -1,0 +1,101 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <!-- INICIO PROYECTO -->
+                    <div class="col-12 col-xl-3 col-md-4 col-sm-6 col-xs-6">
+                        <div class="card text-center item" (click)="abrirModalProyecto(modalProyecto,'proyecto')">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <i class="fas fa-folder-plus icono"></i>
+                                </h5>
+                                <p class="card-text">Nuevo Proyecto</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-xl-3 col-md-4 col-sm-6 col-xs-6" *ngFor="let proyecto of proyectos">
+                        <div class="card text-center item">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <i class="far fa-folder-open icono"></i>
+                                </h5>
+                                <p class="card-text">{{proyecto.nombreProyecto}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- FIN PROYECTO -->
+
+                </div>
+
+                <hr class="separador">
+                <br>
+
+                <div class="row">
+                    <!-- INICIO SNIPPETS -->
+                    <div class="col-12 col-xl-3 col-md-4 col-sm-6 col-xs-6">
+                        <div class="card text-center item" (click)="abrirModalProyecto(modalSnippet,'snippet')">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <i class="far fa-plus-square icono"></i>
+                                </h5>
+                                <p class="card-text">Nuevo Snippet.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-xl-3 col-md-4 col-sm-6 col-xs-6" *ngFor="let snippet of snippets">
+                        <div class="card text-center item">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <i class="far fa-file-code icono"></i>
+                                </h5>
+                                <p class="card-text">{{snippet.nombreSnippet}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- FIN SNIPPETS -->
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL NUEVO PROYECTO -->
+
+
+
+<ng-template #modalProyecto let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Nueva Playlists</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <input class="form-control" type="text" placeholder="Nombre del Proyecto">
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-primary" (click)="guardarProyecto()">Guardar</button>
+
+    </div>
+</ng-template>
+
+<ng-template #modalSnippet let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Nueva Snippet</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <input class="form-control" type="text" placeholder="Nombre del Snippet">
+        <br>
+        <input class="form-control" type="text" placeholder="Tipo">
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-primary" (click)="guardarSnippet()">Guardar</button>
+
+    </div>
+</ng-template>

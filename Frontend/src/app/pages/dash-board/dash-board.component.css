@@ -1,0 +1,32 @@
+.item {
+    border: #222831 solid 3px;
+    border-radius: 10px;
+}
+
+.icono {
+    font-size: 3em;
+    color: #0092ca;
+}
+
+.item:hover {
+    border: #222831 solid 3px;
+    border-radius: 5px;
+    background-color: #222831;
+    color: white;
+    cursor: pointer;
+    -webkit-transition: all .4s ease-in-out;
+}
+
+.icono:hover {
+    -webkit-transform: scale(1.4);
+    transform: scale(1.4);
+}
+
+.icono {
+    overflow: hidden;
+}
+
+.separador {
+    background: #222831;
+    height: 2px;
+}
