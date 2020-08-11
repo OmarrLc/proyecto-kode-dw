@@ -1696,13 +1696,6 @@ Notify
     margin-bottom: 0px;
 }
 
-.page-titles .breadcrumb .breadcrumb-item+.breadcrumb-item::before {
-    content: "\e649";
-    font-family: themify;
-    color: #a6b7bf;
-    font-size: 11px;
-}
-
 .page-titles .breadcrumb .breadcrumb-item.active {
     color: #99abb4;
 }

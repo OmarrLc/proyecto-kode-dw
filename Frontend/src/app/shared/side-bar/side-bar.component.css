@@ -1,3 +1,11 @@
 .itemMenu {
     color: white
 }
+
+.itemMenu:hover {
+    color: #0092ca
+}
+
+.itemMenu:active {
+    color: #0092ca
+}

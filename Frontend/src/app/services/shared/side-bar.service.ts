@@ -6,11 +6,19 @@ import { Injectable } from '@angular/core';
 export class SideBarService {
   menu:any=[
     {
-      titulo: 'Area Personal',
-      icono: 'far fa-user-circle',
+      titulo: 'Proyectos',
+      icono: 'far fa-folder',
+      url: '/dash',
       submenu:[
-        {titulo: 'Proyectos', url: '/dash'},
-        {titulo: 'Snippets', url: '/dash'},
+        {titulo: 'Proyecto 1', url: '/dash1'}
+      ]
+    },
+    {
+      titulo: 'Snippets',
+      icono: 'far fa-file-code',
+      url:'/dash',
+      submenu:[
+        {titulo: 'Snippet 1', url: '/dash1'}
       ]
     }
   ]

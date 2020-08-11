@@ -23,16 +23,16 @@ const routes: Routes = [
     component: PagesComponent,
     children:[
       {
-        path:'dash', component:  DashBoardComponent 
+        path:'dash', component:  DashBoardComponent , data:{titulo: 'Dashboard'}
       },
       {
-        path: 'home', component: HomeComponent
+        path: 'home', component: HomeComponent, data:{titulo: 'Proyecto X'}
       },
       {
-        path: 'perfil', component: PerfilComponent
+        path: 'perfil', component: PerfilComponent, data:{titulo: 'Perfil'}
       },
       {
-        path: 'render', component: CssComponent
+        path: 'render', component: CssComponent, data:{titulo: 'Snippets'}
       },
       {
         path: '', redirectTo: '/index' ,pathMatch:'full'
