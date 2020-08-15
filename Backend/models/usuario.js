@@ -8,7 +8,8 @@ var usuarioSchema = new Schema({
     email: { type: String, unique: true, required: [true, 'Correo requerido'] },
     password: { type: String, required: [true, 'Contraseña requerida'] },
     img: { type: String, required: false },
-    plan: { type: String, required: true, default: 'NOOB' }
+    plan: { type: String, required: true, default: 'NOOB' },
+    google: { type: Boolean, default: false }
 
 });
 

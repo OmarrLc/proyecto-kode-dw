@@ -17,7 +17,7 @@ const proyectoRoutes = require('./routes/proyecto');
 const snippetRoutes = require('./routes/snippet');
 const busquedaRoutes = require('./routes/busqueda');
 const uploadRoutes = require('./routes/upload');
-
+const imagenesRoutes = require('./routes/imagenes');
 // Middlewares
 app.use('/usuario', usuarioRoutes);
 app.use('/login', loginRoutes);
@@ -25,6 +25,7 @@ app.use('/proyecto', proyectoRoutes);
 app.use('/snippet', snippetRoutes);
 app.use('/busqueda', busquedaRoutes);
 app.use('/upload', uploadRoutes);
+app.use('/imagen', imagenesRoutes);
 app.use('/', appRoutes);
 
 
