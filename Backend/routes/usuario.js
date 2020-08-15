@@ -94,10 +94,11 @@ app.put('/:idUsuario', mdAuth.verificaToken, (req, res) => {
                     errors: err
                 })
             }
-            usuarioGuardado.password = 'xD';
+            usuarioGuardado.password = ':)';
             res.status(200).json({
                 ok: true,
-                usuario: usuarioGuardado
+                usuario: usuarioGuardado,
+                usuarioToken: req.usuario
             })
         })
     })
@@ -125,7 +126,8 @@ app.delete('/:idUsuario', mdAuth.verificaToken, (req, res) => {
         }
         res.status(200).json({
             ok: true,
-            usuario: usuarioBorrado
+            usuario: usuarioBorrado,
+            usuarioToken: req.usuario
         })
     })
 
