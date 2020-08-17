@@ -5,7 +5,7 @@ import "brace/mode/html";
 import "brace/mode/css";
 import "brace/mode/javascript";
 import { DomSanitizer } from '@angular/platform-browser';
-
+declare function init_plugins();
 
 @Component({
   selector: 'app-home',
@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   constructor( private sanitizer:DomSanitizer) { }
 
   ngOnInit(): void {
+    init_plugins()
   }
 
     options:any = {maxLines: 1000, printMargin: false};

@@ -9,7 +9,7 @@
                     <ul id="collapseOne" class="collapse" data-parent="#sideBar">
                         <li><a routerLinkActive="active" class="itemMenu" routerLink="/perfil">Mi Perfil </a></li>
                         <li><a routerLinkActive="active" class="itemMenu" routerLink="/perfil">Editar Perfil</a></li>
-                        <li><a routerLink="/login" class="itemMenu">Cerrar Sesión</a></li>
+                        <li><a (click)="_usuarioService.logout()" style="cursor:pointer" class="itemMenu">Cerrar Sesión</a></li>
                     </ul>
                 </li>
                 <li class="nav-devider"></li>

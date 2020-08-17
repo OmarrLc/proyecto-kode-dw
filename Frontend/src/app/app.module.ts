@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CodeEditorModule } from '@ngstack/code-editor';
 import { AceEditorModule } from 'ng2-ace-editor';
 import { AppRoutingModule } from './app-routing.module';
@@ -41,7 +41,7 @@ import { ServiceModule } from './services/service.module';
     RegistroComponent,
     PlanesComponent,
     CssComponent,
-    PerfilComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +51,8 @@ import { ServiceModule } from './services/service.module';
     CodeEditorModule.forRoot(),
     AceEditorModule,
     NgbModule,
-    ServiceModule
+    ServiceModule,
+    ReactiveFormsModule
     
   ],
   providers: [],

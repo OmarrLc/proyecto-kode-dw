@@ -7,23 +7,32 @@
             <div class="login-box card">
 
                 <div class="card-body">
-                    <form class="form-horizontal form-material" id="loginform" action="index.html">
+                    <form ngNativeValidate [formGroup]="forma" (ngSubmit)="registro()" class="form-horizontal form-material" id="loginform">
                         <h3 class="box-title m-b-20 ">Datos de usuario</h3>
-                        <div class="form-group ">
+                        <div class="form-group">
                             <div class="col-xs-12">
-                                <input class="form-control" type="text" required="" placeholder="Nombre de usuario"> </div>
+                                <input formControlName="nombre" name="nombre" class="form-control" type="text" required placeholder="Nombre de usuario"> </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <input class="form-control" type="email" required="" placeholder="Correo Electronico"> </div>
+                                <input formControlName="email" name="email" class="form-control" type="email" required placeholder="Correo Electronico"> </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <input class="form-control" type="password" required="" placeholder="Contraseña"> </div>
+                                <input formControlName="password" name="password" class="form-control" type="password" required placeholder="Contraseña"> </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <input formControlName="password2" name="password2" class="form-control" type="password" required placeholder="Confirmar contraseña"> </div>
+                        </div>
+                        <div class="form-group" *ngIf="forma.errors?.sonIguales && !forma.pristine">
+                            <p class="text-danger">
+                                Las contraseñas deben ser iguales
+                            </p>
                         </div>
                         <div class="form-group text-center">
                             <div class="col-xs-12 p-b-20">
-                                <button class="btn btn-outline-primary" routerLink="/dash" type="button">Registrarse</button>
+                                <button class="btn btn-outline-primary" type="submit">Registrarse</button>
                             </div>
                         </div>
                         <div class="row">

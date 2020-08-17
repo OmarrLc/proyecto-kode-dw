@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-
+declare function init_plugins();
 @Component({
   selector: 'app-dash-board',
   templateUrl: './dash-board.component.html',
@@ -42,7 +42,7 @@ export class DashBoardComponent implements OnInit {
 
 
   ngOnInit(): void {
-
+    init_plugins();
   }
   abrirModalProyecto(modal,tipo){
     this.modalService.open(modal,

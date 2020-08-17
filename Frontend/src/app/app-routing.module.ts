@@ -12,6 +12,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { CssComponent } from './pages/home/css.component';
 
+import { LoginGuardGuard } from './services/service.index';
+
 
 const routes: Routes = [
   {
@@ -21,8 +23,9 @@ const routes: Routes = [
   {
     path:'',
     component: PagesComponent,
+    canActivate: [ LoginGuardGuard ],
     children:[
-      {
+      {  
         path:'dash', component:  DashBoardComponent , data:{titulo: 'Dashboard'}
       },
       {

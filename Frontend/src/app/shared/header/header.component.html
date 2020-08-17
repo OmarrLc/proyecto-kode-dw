@@ -7,7 +7,7 @@
             <a class="navbar-brand" href="/index">
                 <!-- Logo icon --><b>
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                            <!-- Dark Logo icon -->
+                             <!-- Dark Logo icon -->
                             <img src="assets/images/logo-oficial.png"  alt="homepage" class="dark-logo logoHeader" />
                             </b>
 
@@ -50,7 +50,7 @@
                             <li role="separator" class="divider"></li>
                             <li><a routerLink="/perfil"><i class="ti-user"></i> Perfil</a></li>
                             <li><a routerLink="/perfil"><i class="ti-wallet"></i> Editar Perfil</a></li>
-                            <li><a href="#"><i class="ti-email"></i> Cerrar sesión</a></li>
+                            <li><a (click)="_usuarioService.logout()" style="cursor:pointer"><i class="ti-email"></i> Cerrar sesión</a></li>
 
                         </ul>
                     </div>
