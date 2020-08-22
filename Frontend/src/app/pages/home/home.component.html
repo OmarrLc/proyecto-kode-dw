@@ -2,7 +2,17 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-
+                <div class="row">
+                    <div class="col-12 text-right">
+                        <button (click)="ConfirmBorrar()" class="btn btn-outline-danger ti-align-right mr-3">
+                            <i class="far fa-trash-alt"></i><span> Borrar Cambios</span> 
+                        </button>
+                        <button (click)="guardarCambios()" class="btn btn-outline-primary ti-align-right">
+                            <i class="far fa-save"></i><span> Guardar Cambios</span> 
+                        </button>
+                    </div>
+                </div>
+                <br>
                 <div class="row">
                     <div class="col-12	col-sm-12	col-md-6	col-lg-4	col-xl-4">
                         <h4>HTML</h4>

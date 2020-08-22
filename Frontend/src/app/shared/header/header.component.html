@@ -35,15 +35,17 @@
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="far fa-user-circle" style="font-size: 1.3em;"></i></a>
+                    <a class="nav-link dropdown-toggle waves-effect waves-dark" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img [src]="usuario.img | imagen" alt="user" class="profile-pic">
+                    </a>
                     <div class="dropdown-menu dropdown-menu-right animated fadeIn">
                         <ul class="dropdown-user">
                             <li>
-                                <div class="dw-user-box">
-                                    <div class="u-img"><i class="far fa-user-circle" style="font-size: 2em;"></i></div>
-                                    <div class="u-text">
-                                        <h4>User</h4>
-                                        <p class="text-muted">user@gmail.com</p>
+                                <div class="dw-user-box text-center">
+                                    <div class="u-img text-center"> <img [src]="usuario.img | imagen" alt="user"></div>
+                                    <div class="u-text text-center" style="display: inline;">
+                                        <h4>{{usuario.nombreUsuario}}</h4>
+                                        <p class="text-muted">{{usuario.email}}</p>
                                     </div>
                                 </div>
                             </li>

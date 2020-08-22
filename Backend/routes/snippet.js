@@ -3,9 +3,9 @@ const mdAuth = require('../middlewares/auth');
 const app = express();
 const Snippet = require('../models/snippet')
 
-// Obtener todos los snippets
-app.get('/', (req, res) => {
-    Snippet.find({})
+// Obtener todos los snippets de un usuario
+app.get('/:idUsuario', (req, res) => {
+    Snippet.find({ usuario: req.params.idUsuario })
         .exec(
             (err, snippets) => {
                 if (err) {
@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
                         errors: err
                     })
                 }
-                Snippet.count({}, (err, conteo) => {
+                Snippet.count({ usuario: req.params.idUsuario }, (err, conteo) => {
                     res.status(200).json({
                         ok: true,
                         snippets,

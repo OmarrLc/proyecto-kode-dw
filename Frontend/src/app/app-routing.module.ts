@@ -29,7 +29,7 @@ const routes: Routes = [
         path:'dash', component:  DashBoardComponent , data:{titulo: 'Dashboard'}
       },
       {
-        path: 'home', component: HomeComponent, data:{titulo: 'Proyecto X'}
+        path: 'home', component: HomeComponent, data:{titulo:  'Proyecto'}
       },
       {
         path: 'perfil', component: PerfilComponent, data:{titulo: 'Perfil'}
@@ -40,7 +40,6 @@ const routes: Routes = [
       {
         path: '', redirectTo: '/index' ,pathMatch:'full'
       }
-      
     ]
   },
   {

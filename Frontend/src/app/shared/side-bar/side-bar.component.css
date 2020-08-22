@@ -1,5 +1,6 @@
 .itemMenu {
-    color: white
+    color: white;
+    cursor: pointer;
 }
 
 .itemMenu:hover {

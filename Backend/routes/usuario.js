@@ -103,7 +103,7 @@ app.put('/:idUsuario', mdAuth.verificaToken, (req, res) => {
     })
 
 });
-
+ 
 // Eliminar un usuario
 app.delete('/:idUsuario', mdAuth.verificaToken, (req, res) => {
     var id = req.params.idUsuario;

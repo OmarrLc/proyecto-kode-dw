@@ -3,9 +3,9 @@ const mdAuth = require('../middlewares/auth');
 const app = express();
 const Proyecto = require('../models/proyecto')
 
-// Obtener todos los proyectos
-app.get('/', (req, res) => {
-    Proyecto.find({})
+// Obtener todos los proyectos de un usuario
+app.get('/:idUsuario', (req, res) => {
+    Proyecto.find({ usuario: req.params.idUsuario })
         .exec(
             (err, proyectos) => {
                 if (err) {
@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
                     })
                 }
 
-                Proyecto.count({}, (err, conteo) => {
+                Proyecto.count({ usuario: req.params.idUsuario }, (err, conteo) => {
 
                     res.status(200).json({
                         ok: true,

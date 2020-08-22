@@ -22,7 +22,7 @@ import { CssComponent } from './pages/home/css.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { ServiceModule } from './services/service.module';
-
+import { PipesModule } from './pipes/pipes.module';
 
 
 @NgModule({
@@ -52,7 +52,8 @@ import { ServiceModule } from './services/service.module';
     AceEditorModule,
     NgbModule,
     ServiceModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PipesModule
     
   ],
   providers: [],

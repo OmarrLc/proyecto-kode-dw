@@ -4,8 +4,8 @@
             <div class="card-body">
                 <div class="row">
                     <!-- INICIO PROYECTO -->
-                    <div class="col-12 col-xl-3 col-md-4 col-sm-6 col-xs-6">
-                        <div class="card text-center item" (click)="abrirModalProyecto(modalProyecto,'proyecto')">
+                    <div class="col-12 col-xl-3 col-md-4 col-sm-6 col-xs-6 my-3">
+                        <div class="card text-center item" (click)="verificarPlan(modalProyecto)">
                             <div class="card-body">
                                 <h5 class="card-title">
                                     <i class="fas fa-folder-plus icono"></i>
@@ -14,14 +14,17 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-xl-3 col-md-4 col-sm-6 col-xs-6" *ngFor="let proyecto of proyectos">
-                        <div class="card text-center item">
+                    <div class="col-12 col-xl-3 col-md-4 col-sm-6 col-xs-6 my-3" *ngFor="let proyecto of proyectos">
+                        <div class="card text-center item" (click)="mostrarProyecto(proyecto)">
                             <div class="card-body">
                                 <h5 class="card-title">
                                     <i class="far fa-folder-open icono"></i>
                                 </h5>
                                 <p class="card-text">{{proyecto.nombreProyecto}}</p>
                             </div>
+                        </div>
+                        <div class="text-center">
+                            <button (click)="ConfirmDemo(proyecto._id,proyecto.nombreProyecto)" class="btn btn-outline-danger"> <i class="far fa-trash-alt"></i></button>
                         </div>
                     </div>
                     <!-- FIN PROYECTO -->
@@ -33,7 +36,7 @@
 
                 <div class="row">
                     <!-- INICIO SNIPPETS -->
-                    <div class="col-12 col-xl-3 col-md-4 col-sm-6 col-xs-6">
+                    <div class="col-12 col-xl-3 col-md-4 col-sm-6 col-xs-6 my-3">
                         <div class="card text-center item" (click)="abrirModalProyecto(modalSnippet,'snippet')">
                             <div class="card-body">
                                 <h5 class="card-title">
@@ -43,14 +46,17 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-xl-3 col-md-4 col-sm-6 col-xs-6" *ngFor="let snippet of snippets">
-                        <div class="card text-center item">
+                    <div class="col-12 col-xl-3 col-md-4 col-sm-6 col-xs-6 my-3" *ngFor="let snippet of snippets">
+                        <div class="card text-center item" (click)="mostrarSnippet(snippet._id)">
                             <div class="card-body">
                                 <h5 class="card-title">
                                     <i class="far fa-file-code icono"></i>
                                 </h5>
                                 <p class="card-text">{{snippet.nombreSnippet}}</p>
                             </div>
+                        </div>
+                        <div class="text-center">
+                            <button (click)="eliminarSnippet(snippet._id)" class="btn btn-outline-danger"> <i class="far fa-trash-alt"></i></button>
                         </div>
                     </div>
                     <!-- FIN SNIPPETS -->
@@ -68,34 +74,52 @@
 
 <ng-template #modalProyecto let-modal>
     <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Nueva Playlists</h4>
+        <h4 class="modal-title" id="modal-basic-title">Nuevo Proyecto</h4>
         <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="modal-body">
-        <input class="form-control" type="text" placeholder="Nombre del Proyecto">
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-outline-primary" (click)="guardarProyecto()">Guardar</button>
-
+        <form ngNativeValidate #f="ngForm" (ngSubmit)="crearProyecto(f.value)" class="form-horizontal form-material">
+            <div class="form-group">
+                <label class="col-md-12">Nombre de Proyecto</label>
+                <div class="col-md-12">
+                    <input [ngModel]="nombreProyecto" name="nombreProyecto" type="text" placeholder="Ingrese el nombre del proyecto" class="form-control" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12 my-2 text-center">
+                    <button type="submit" class="btn btn-primary">Crear Proyecto</button>
+                </div>
+            </div>
+        </form>
     </div>
 </ng-template>
 
 <ng-template #modalSnippet let-modal>
     <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Nueva Snippet</h4>
+        <h4 class="modal-title" id="modal-basic-title">Nuevo Snippet</h4>
         <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="modal-body">
-        <input class="form-control" type="text" placeholder="Nombre del Snippet">
-        <br>
-        <input class="form-control" type="text" placeholder="Tipo">
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-outline-primary" (click)="guardarSnippet()">Guardar</button>
-
+        <form ngNativeValidate #f="ngForm" (ngSubmit)="crearSnippet(f.value)" class="form-horizontal form-material">
+            <div class="form-group">
+                <label class="col-md-12">Nombre de Proyecto</label>
+                <div class="col-md-12">
+                    <input [ngModel]="nombreSnippet" name="nombreSnippet" type="text" placeholder="Ingrese el nombre del Snippet" class="form-control" required>
+                </div>
+                <label class="col-md-12">Tipo de proyecto</label>
+                <div class="col-md-12">
+                    <input [ngModel]="tipoSnippet" name="tipoSnippet" type="text" placeholder="Ingrese el tipo de Snippet, ej: javascript, php, html...." class="form-control" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12 my-2 text-center">
+                    <button type="submit" class="btn btn-primary">Crear Snippet</button>
+                </div>
+            </div>
+        </form>
     </div>
 </ng-template>

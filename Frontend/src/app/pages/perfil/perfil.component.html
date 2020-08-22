@@ -2,30 +2,33 @@
 <!-- Start Page Content -->
 <!-- ============================================================== -->
 <!-- Row -->
-<div class="row">
+<div class="row animated fadeIn">
     <!-- Column -->
     <div class="col-lg-4 col-xlg-3 col-md-5">
         <div class="card">
             <div class="card-body">
                 <div class="m-t-30 text-center">
-                    <i class="far fa-user-circle" style="font-size: 6em;"></i>
-                    <h4 class="card-title m-t-10">User</h4>
+                    <img *ngIf="!imagenTemp" [src]="usuario.img | imagen" class="imgPerfil">
+                    <img *ngIf="imagenTemp" [src]="imagenTemp" class="imgPerfil">
+
+                    <input (change)="seleccionImagen($event.target.files[0])" type="file">
+                    <div class="col-sm-12 my-3">
+                        <button (click)="cambiarImagen()" [disabled]="!imagenSubir" class="btn btn-primary">Actualizar Foto</button>
+                    </div>
                 </div>
             </div>
             <div>
                 <hr> </div>
-            <div class="card-body"> <small class="text-muted">Correo Electronico </small>
-                <h6>user@gmail.com</h6>
-                <small class="text-muted p-t-30 db">Plan</small>
-                <h6>NOOB</h6>
-
-                <br/>
-
+            <div class="card-body text-center">
+                <small class="text-muted my-3">Nombre </small>
+                <h5>{{usuario.nombreUsuario}}</h5>
+                <small class="text-muted my-3">Correo Electronico </small>
+                <h5>{{usuario.email}}</h5>
+                <small class="text-muted my-3">Plan</small>
+                <h5>{{usuario.plan}}</h5>
             </div>
         </div>
     </div>
-    <!-- Column -->
-    <!-- Column -->
     <div class="col-lg-8 col-xlg-9 col-md-7">
         <div class="card">
             <!-- Nav tabs -->
@@ -36,38 +39,32 @@
             <div class="tab-content">
                 <div class="tab-pane active" id="settings" role="tabpanel">
                     <div class="card-body">
-                        <form class="form-horizontal form-material">
+                        <form ngNativeValidate #f="ngForm" (ngSubmit)="actualizar(f.value)" class="form-horizontal form-material">
                             <div class="form-group">
                                 <label class="col-md-12">Nombre</label>
                                 <div class="col-md-12">
-                                    <input type="text" placeholder="Johnathan Doe" class="form-control form-control-line">
+                                    <input [ngModel]="usuario.nombreUsuario" name="nombreUsuario" type="text" placeholder="Nombre de usuario" class="form-control form-control-line" required>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="example-email" class="col-md-12">Correo electronico</label>
+                            <div class="form-group" *ngIf="usuario.google===false">
+                                <label class="col-md-12">Correo electronico</label>
                                 <div class="col-md-12">
-                                    <input type="email" placeholder="johnathan@admin.com" class="form-control form-control-line" name="example-email" id="example-email">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-12">Contraseña</label>
-                                <div class="col-md-12">
-                                    <input type="password" value="password" class="form-control form-control-line">
+                                    <input [ngModel]="usuario.email" name="email" type="email" placeholder="Correo de usuario" class="form-control form-control-line" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-12">Cambiar Plan</label>
                                 <div class="col-sm-12">
-                                    <select class="form-control form-control-line">
-                                        <option>Noob</option>
-                                        <option>Junior</option>
-                                        <option>Senior</option>
+                                    <select [ngModel]="usuario.plan" name="plan" class="form-control form-control-line">
+                                        <option ngValue="NOOB">Noob</option>
+                                        <option ngValue="JUNIOR">Junior</option>
+                                        <option ngValue="SENIOR">Senior</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-12">
-                                    <button class="btn btn-primary">Actualizar Perfil</button>
+                                    <button type="submit" class="btn btn-primary">Actualizar Perfil</button>
                                 </div>
                             </div>
                         </form>

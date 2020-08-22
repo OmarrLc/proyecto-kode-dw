@@ -1,6 +1,7 @@
 .item {
     border: #222831 solid 3px;
     border-radius: 10px;
+    margin-bottom: 5px;
 }
 
 .icono {
@@ -29,4 +30,10 @@
 .separador {
     background: #222831;
     height: 2px;
+}
+
+.inputN {
+    border: #222831 solid 0.7px;
+    border-radius: 10px;
+    padding: 1em;
 }
