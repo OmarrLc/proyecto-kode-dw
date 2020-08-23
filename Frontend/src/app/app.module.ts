@@ -16,14 +16,13 @@ import { BreadCrumbsComponent } from './shared/bread-crumbs/bread-crumbs.compone
 import { PagesComponent } from './pages/pages.component';
 import { LandingComponent } from './landing/landing.component';
 import { RegistroComponent } from './registro/registro.component';
-import { PlanesComponent } from './registro/planes.component';
+import { PlanesComponent } from './registro/planes.component'; 
 import { CodemirrorModule } from '@ctrl/ngx-codemirror';
-import { CssComponent } from './pages/home/css.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { ServiceModule } from './services/service.module';
 import { PipesModule } from './pipes/pipes.module';
-
+import { HomeSnippetComponent } from './pages/home-snippet/home-snippet.component';
 
 @NgModule({
   declarations: [
@@ -40,8 +39,8 @@ import { PipesModule } from './pipes/pipes.module';
     LandingComponent,
     RegistroComponent,
     PlanesComponent,
-    CssComponent,
-    PerfilComponent
+    PerfilComponent,
+    HomeSnippetComponent
   ],
   imports: [
     BrowserModule,

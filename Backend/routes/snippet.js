@@ -28,7 +28,6 @@ app.get('/:idUsuario', (req, res) => {
 })
 
 // Obtener un snippet por ID
-// Obtener un proyecto por ID
 app.get('/:idSnippet', mdAuth.verificaToken, (req, res) => {
     Snippet.findOne({ _id: req.params.idSnippet }, (err, snippetDB) => {
 

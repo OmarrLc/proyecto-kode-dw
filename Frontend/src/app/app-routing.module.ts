@@ -10,9 +10,9 @@ import { LandingComponent } from './landing/landing.component';
 import { RegistroComponent } from './registro/registro.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
-import { CssComponent } from './pages/home/css.component';
 
 import { LoginGuardGuard } from './services/service.index';
+import { HomeSnippetComponent } from './pages/home-snippet/home-snippet.component';
 
 
 const routes: Routes = [
@@ -35,7 +35,7 @@ const routes: Routes = [
         path: 'perfil', component: PerfilComponent, data:{titulo: 'Perfil'}
       },
       {
-        path: 'render', component: CssComponent, data:{titulo: 'Snippets'}
+        path: 'homeSnippet', component: HomeSnippetComponent, data:{titulo: 'Snippets'}
       },
       {
         path: '', redirectTo: '/index' ,pathMatch:'full'

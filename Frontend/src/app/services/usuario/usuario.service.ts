@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Usuario } from 'src/app/models/usuario.models';
 import { URL_SERVICIOS } from 'src/app/config/config';
-import { map } from 'rxjs/operators'; 
+import { map, catchError } from 'rxjs/operators'; 
 import { Router } from '@angular/router';
 import { SubirArchivoService } from '../subirArchivo/subir-archivo.service';
+import {Observable, throwError} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,7 @@ export class UsuarioService {
   snippets;
   proyectoSeleccionado:any='';
   snippetSeleccionado:any='';
+  errorLogin= false;
   
 
   constructor( 
@@ -26,6 +28,7 @@ export class UsuarioService {
   ) { 
     this.cargarStorage();
   }
+  // Funciones de Login y de Usuario
 
   estaLogueado(){
     return ( this.token.length >2 ) ? true : false;
@@ -57,6 +60,9 @@ export class UsuarioService {
     
     localStorage.removeItem('usuario');
     localStorage.removeItem('token');
+    localStorage.removeItem('snippetSeleccionado');
+    localStorage.removeItem('proyectoSeleccionado');
+    localStorage.removeItem('id');
     this.router.navigate(['/login']);
   }
   loginGoogle(token:string){
@@ -68,7 +74,6 @@ export class UsuarioService {
           return true;
         })
       )
-
 
   }
 
@@ -84,6 +89,11 @@ export class UsuarioService {
         map((resp:any)=>{
           this.guardarStorage(resp.id,resp.token,resp.usuarioDB);
           return true;
+        }),
+        catchError((err:any)=>{
+          this.errorLogin=true;
+          alert(err.error.mensaje);
+          return Observable.throw(err.error.mensaje);
         })
       )
   }
@@ -93,9 +103,15 @@ export class UsuarioService {
     return this.http.post( url, usuario )
       .pipe(
         map( (resp:any)=>{
-          // swal('Registrado exitosamente', usuario.email, 'success');
           return resp.usuario;
-        } ) 
+        }),
+        catchError((err:any)=>{
+          if(err.status===500){
+            alert('Correo Electronico ya registrado');
+          }
+          
+          return Observable.throw(err.error.mensaje);
+        }) 
       )
   }
 
@@ -105,8 +121,7 @@ export class UsuarioService {
     return this.http.put(url, usuario)
       .pipe(
         map((resp:any)=>{
-          this.guardarStorage(resp.usuario._id, this.token,resp.usuario);
-          // swal('Usuario Actualizado', usuario.nombreUsuario, 'success');
+          this.guardarStorage(resp.usuario._id, this.token,resp.usuario)
           return true;
         })
       )
@@ -120,9 +135,11 @@ export class UsuarioService {
           this.guardarStorage (id, this.token, this.usuario );
         })
         .catch(resp=>{
-          console.log(resp);
+          // console.log(resp);
         })
   }
+
+  // Funciones de Proyectos
 
   cargarProyectos(id: string){
     let url = URL_SERVICIOS+'/proyecto/'+id
@@ -135,6 +152,44 @@ export class UsuarioService {
         })
       )
   }
+
+  crearProyecto(proyecto:string){
+    let url = URL_SERVICIOS+'/proyecto';
+    url +='?token='+this.token
+    return this.http.post(url,proyecto)
+  }
+
+    
+  eliminarProyecto(id:string){
+    let url = URL_SERVICIOS+'/proyecto/'+id;
+    url +='?token='+this.token;
+    return this.http.delete(url);
+  }
+
+  actualizarProyecto(id:string,proyecto:any){
+    let url = URL_SERVICIOS+/proyecto/+id;
+    url+='?token='+this.token;
+    return this.http.put(url,proyecto)
+      .pipe(
+        map((resp:any)=>{
+          // console.log(resp)
+          localStorage.setItem('proyectoSeleccionado',JSON.stringify(resp.Proyecto));
+        })
+      )
+  }
+
+  proyectoSeleccionadoAMostrar(proyecto:any){
+    this.proyectoSeleccionado=proyecto;
+    // console.log('Proyecto que puede acceder los editores', this.proyectoSeleccionado);
+    localStorage.setItem('proyectoSeleccionado', JSON.stringify(proyecto));
+    window.location.href= '/home';
+  }
+
+  descargarProyecto(idProyecto){
+    let url= URL_SERVICIOS+'/dowload/'+idProyecto+'/proyecto?token='+this.token;
+    return this.http.get(url)
+  }
+  // Funciones de Snippets
   cargarSnippets(id: string){
     let url = URL_SERVICIOS+'/snippet/'+id
     return this.http.get(url) 
@@ -146,37 +201,39 @@ export class UsuarioService {
       )
   }
 
-  crearProyecto(proyecto:string){
-    let url = URL_SERVICIOS+'/proyecto';
-    url +='?token='+this.token
-    return this.http.post(url,proyecto)
-  }
-  
-  eliminarProyecto(id:string){
-    let url = URL_SERVICIOS+'/proyecto/'+id;
+  eliminarSnippet(id:string){
+    let url = URL_SERVICIOS+'/snippet/'+id;
     url +='?token='+this.token;
     return this.http.delete(url);
   }
 
-  proyectoSeleccionadoAMostrar(proyecto:any){
-    this.proyectoSeleccionado=proyecto;
+  snippetSeleccionadoAMostrar(snippet:any){
+    this.snippetSeleccionado=snippet;
     // console.log('Proyecto que puede acceder los editores', this.proyectoSeleccionado);
-    localStorage.setItem('proyectoSeleccionado', JSON.stringify(proyecto));
-    window.location.href= '/home';
+    localStorage.setItem('snippetSeleccionado', JSON.stringify(snippet));
+    window.location.href= '/homeSnippet';
   }
 
-  actualizarProyecto(id:string,proyecto:any){
-    let url = URL_SERVICIOS+/proyecto/+id;
+  crearSnippet(snippet:string){
+    let url = URL_SERVICIOS+'/snippet';
+    url +='?token='+this.token
+    return this.http.post(url,snippet)
+  }
+
+  actualizarSnippet(id:string,snippet:any){
+    let url = URL_SERVICIOS+/snippet/+id;
     url+='?token='+this.token;
-    return this.http.put(url,proyecto)
+    return this.http.put(url,snippet)
       .pipe(
         map((resp:any)=>{
-          console.log(resp)
-          localStorage.setItem('proyectoSeleccionado',JSON.stringify(resp.Proyecto));
+          // console.log(resp)
+          localStorage.setItem('snippetSeleccionado',JSON.stringify(resp.Snippet));
         })
       )
-
   }
 
-
+  descargarSnippet(idSnippet){
+    let url= URL_SERVICIOS+'/dowload/'+idSnippet+'/snippet?token='+this.token;
+    return this.http.get(url)
+  }
 }

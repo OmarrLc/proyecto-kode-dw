@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild} from '@angular/core';
 import 'ace-builds/webpack-resolver';
-import "brace/theme/pastel_on_dark";
+import "brace/theme/monokai";
 import "brace/mode/html";
 import "brace/mode/css";
 import "brace/mode/javascript";
@@ -51,19 +51,20 @@ export class HomeComponent implements OnInit {
     onChangeHtml(code) {
       // code= this.sanitizer.bypassSecurityTrustHtml(code)
       this.textHtml=code
+      this.renderHtml();
       
       // console.log("HTML", this.textHtml);
     }
     onChangeCss(code) {
       this.textCss=code
-      
+      this.renderCss();
       // code= this.sanitizer.bypassSecurityTrustStyle(code);
       // console.log("CSS", code);
        
     }
     onChangeJs(code) {
       this.textJs=code
-      
+      this.renderJs();
       // code= this.sanitizer.bypassSecurityTrustScript(code)
       // console.log("JS", code);
     }
@@ -81,4 +82,48 @@ export class HomeComponent implements OnInit {
           .subscribe (()=> this.proyectoSeleccionado = JSON.parse(localStorage.getItem('proyectoSeleccionado')))
 
     }
+
+    descargarProyecto(){
+      this._usuarioService.descargarProyecto(this.proyectoSeleccionado._id)
+        .subscribe (resp=>{
+          alert('Proyecto Descargado Exitosamente');
+        })
+    }
+
+    // render =`
+    // <!DOCTYPE html>
+    // <html lang="en">
+    // <head>
+    //     <meta charset="UTF-8">
+    //     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    //     <title>Document</title>
+    //     <style>
+    //     ${this.renderCss()}
+    //     </style>
+    // </head>
+    
+    // <body>
+    // ${this.renderHtml()}
+    
+    // </body>
+    
+    // <script>
+    //     ${this.renderJs()}
+    // </script>
+    
+    // </html>`
+
+  // renderM(){
+  //   return this.sanitizer.bypassSecurityTrustHtml(this.render);
+  // }
+  renderHtml(){
+    return this.sanitizer.bypassSecurityTrustHtml(this.textHtml);
+  }
+  renderCss(){
+    return this.sanitizer.bypassSecurityTrustStyle(this.textCss);
+  }
+  renderJs(){
+    return this.sanitizer.bypassSecurityTrustScript(this.textJs);
+  }
+
 }

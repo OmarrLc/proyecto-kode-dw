@@ -3,66 +3,68 @@
         <div class="card">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-12 text-right">
+                    <h4 class="col-4 text-left">Proyecto: {{proyectoSeleccionado.nombreProyecto}}</h4>
+                    <div class="col-8 text-right">
                         <button (click)="ConfirmBorrar()" class="btn btn-outline-danger ti-align-right mr-3">
                             <i class="far fa-trash-alt"></i><span> Borrar Cambios</span> 
                         </button>
-                        <button (click)="guardarCambios()" class="btn btn-outline-primary ti-align-right">
+                        <button (click)="guardarCambios()" class="btn btn-outline-primary ti-align-right mr-3">
                             <i class="far fa-save"></i><span> Guardar Cambios</span> 
+                        </button>
+                        <button (click)="descargarProyecto()" class="btn btn-outline-primary ti-align-right">
+                            <i class="fas fa-download"></i><span> Descargar</span> 
                         </button>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-12	col-sm-12	col-md-6	col-lg-4	col-xl-4">
-                        <h4>HTML</h4>
-                        <div ace-editor #editorHtml [(text)]="textHtml" [mode]="'html'" [theme]="'monokai'" [options]="options" [readOnly]="false" [autoUpdateContent]="true" [durationBeforeCallback]="1000" (textChanged)="onChangeHtml($event)" style="min-height: 200px; width:100%; overflow: auto;"></div>
+                        <h6>HTML</h6>
+                        <div ace-editor #editorHtml [(text)]="textHtml" [mode]="'html'" [theme]="'monokai'" [options]="options" [readOnly]="false" [autoUpdateContent]="true" [durationBeforeCallback]="1000" (textChanged)="onChangeHtml($event)" style="min-height: 300px; width:100%; overflow: auto;"></div>
                     </div>
                     <div class="col-12	col-sm-12	col-md-6	col-lg-4	col-xl-4">
-                        <h4>CSS</h4>
-                        <div ace-editor #editorCss [(text)]="textCss" [mode]="'css'" [theme]="'monokai'" [options]="options" [readOnly]="false" [autoUpdateContent]="true" [durationBeforeCallback]="1000" (textChanged)="onChangeCss($event)" style="min-height: 200px; width:100%; overflow: auto;"></div>
+                        <h6>CSS</h6>
+                        <div ace-editor #editorCss [(text)]="textCss" [mode]="'css'" [theme]="'monokai'" [options]="options" [readOnly]="false" [autoUpdateContent]="true" [durationBeforeCallback]="1000" (textChanged)="onChangeCss($event)" style="min-height: 300px; width:100%; overflow: auto;"></div>
 
                     </div>
                     <div class="col-12	col-sm-12	col-md-6	col-lg-4	col-xl-4">
-                        <h4>JS</h4>
-                        <div ace-editor #editorJs [(text)]="textJs" [mode]="'javascript'" [theme]="'monokai'" [options]="options" [readOnly]="false" [autoUpdateContent]="true" [durationBeforeCallback]="1000" (textChanged)="onChangeJs($event)" style="min-height: 200px; width:100%; overflow: auto;"></div>
+                        <h6>JS</h6>
+                        <div ace-editor #editorJs [(text)]="textJs" [mode]="'javascript'" [theme]="'monokai'" [options]="options" [readOnly]="false" [autoUpdateContent]="true" [durationBeforeCallback]="1000" (textChanged)="onChangeJs($event)" style="min-height: 300px; width:100%; overflow: auto;"></div>
                     </div>
                     <div>
-                        <h1>{{textHtml}}</h1>
-                        <h1>{{textCss}}</h1>
-                        <h1>{{textJs}}</h1>
+
+                        <!-- <p>{{render}}</p> -->
                     </div>
                     <div class="col-12	col-sm-12	col-md-6	col-lg-12	col-xl-12 my-3">
-                        <h1>Resultado</h1>
+                        <h6>Resultado</h6>
+                        <!-- <iframe id="iframe" style="border: 0; margin: 0" [srcdoc]="renderM()"></iframe> -->
+                        <iframe srcdoc='
+                                    <!DOCTYPE html>
+                                    <html lang="en">   
+                                    
+                                    <head>
+                                        <meta charset="UTF-8">
+                                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                        <title>Document</title>
+                                        <style>
+                                            {{textCss}}
+                                        </style>
+                                    </head>
+                                    
+                                    <body>
+                                        {{textHtml}}
+                                        <script>
+                                            {{textJs}}
+                                        </script>
+                                    </body>
+                                    
+                                    </html>' style="width: 100%; min-height: 300px">
+                        </iframe>
                     </div>
+
                 </div>
 
             </div>
         </div>
     </div>
 </div>
-<!-- 
-<iframe srcdoc='
-<!DOCTYPE html>
-<html lang="en">   
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-            
-        {{textCss}}
-    </style>
-
-    <script>
-        {{textJs}}
-    </script>
-</head>
-
-<body>
-    {{textHtml}}
-</body>
-
-</html>
-    '></iframe> -->

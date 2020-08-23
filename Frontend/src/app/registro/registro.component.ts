@@ -37,12 +37,6 @@ export class RegistroComponent implements OnInit {
       password: new FormControl(null, Validators.required),
       password2: new FormControl(null, Validators.required)
     }, { validators: this.sonIguales('password', 'password2') } );
-    this.forma.setValue({
-      nombre: 'test',
-      email:'test@test.com',
-      password: '123456',
-      password2:'123456'
-    })
   }
 
   registro(){

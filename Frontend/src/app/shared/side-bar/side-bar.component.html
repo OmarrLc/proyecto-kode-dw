@@ -20,14 +20,14 @@
                 <li> <a class="has-arrow waves-effect waves-dark" role="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><i class="far fa-folder"></i><span routerLinkActive="active" routerLink="/dash" class="hide-menu itemMenu"> Proyectos </span></a>
                     <ul id="collapseTwo" class="collapse" data-parent="#sideBar">
                         <li *ngFor="let proyecto of proyectos">
-                            <a routerLinkActive="active" class="itemMenu" (click)="mostrarProyecto(proyecto._id)"><i class="far fa-folder-open"></i><span class="itemMenu" > {{proyecto.nombreProyecto}} </span> </a>
+                            <a routerLinkActive="active" class="itemMenu" (click)="mostrarProyecto(proyecto)"><i class="far fa-folder-open"></i><span class="itemMenu" > {{proyecto.nombreProyecto}} </span> </a>
                         </li>
                     </ul>
                 </li>
                 <li> <a class="has-arrow waves-effect waves-dark" role="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"><i class="far fa-file-code"></i><span routerLinkActive="active" routerLink="/dash" class="hide-menu itemMenu"> Snippets </span></a>
                     <ul id="collapseThree" class="collapse" data-parent="#sideBar">
                         <li *ngFor="let snippet of snippets">
-                            <a routerLinkActive="active" class="itemMenu" (click)="mostrarSnippet(snippet._id)"><i class="far fa-file-code"></i><span class="itemMenu"> {{snippet.nombreSnippet}}</span> </a>
+                            <a routerLinkActive="active" class="itemMenu" (click)="mostrarSnippet(snippet)"><i class="far fa-file-code"></i><span class="itemMenu"> {{snippet.nombreSnippet}}</span> </a>
                         </li>
                     </ul>
                 </li>

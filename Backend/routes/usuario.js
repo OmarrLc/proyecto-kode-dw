@@ -5,7 +5,7 @@ const mdAuth = require('../middlewares/auth');
 const app = express();
 const Usuario = require('../models/usuario')
 
-
+ 
 // Obtener todos los usarios
 app.get('/', (req, res) => {
     Usuario.find({}, 'nombreUsuario email password img plan ')

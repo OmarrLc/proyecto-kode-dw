@@ -24,7 +24,7 @@
                             </div>
                         </div>
                         <div class="text-center">
-                            <button (click)="ConfirmDemo(proyecto._id,proyecto.nombreProyecto)" class="btn btn-outline-danger"> <i class="far fa-trash-alt"></i></button>
+                            <button (click)="ConfirmProyecto(proyecto._id,proyecto.nombreProyecto)" class="btn btn-outline-danger"> <i class="far fa-trash-alt"></i></button>
                         </div>
                     </div>
                     <!-- FIN PROYECTO -->
@@ -47,7 +47,7 @@
                         </div>
                     </div>
                     <div class="col-12 col-xl-3 col-md-4 col-sm-6 col-xs-6 my-3" *ngFor="let snippet of snippets">
-                        <div class="card text-center item" (click)="mostrarSnippet(snippet._id)">
+                        <div class="card text-center item" (click)="mostrarSnippet(snippet)">
                             <div class="card-body">
                                 <h5 class="card-title">
                                     <i class="far fa-file-code icono"></i>
@@ -56,7 +56,7 @@
                             </div>
                         </div>
                         <div class="text-center">
-                            <button (click)="eliminarSnippet(snippet._id)" class="btn btn-outline-danger"> <i class="far fa-trash-alt"></i></button>
+                            <button (click)="ConfirmSnippet(snippet._id,snippet.nombreSnippet)" class="btn btn-outline-danger"> <i class="far fa-trash-alt"></i></button>
                         </div>
                     </div>
                     <!-- FIN SNIPPETS -->
@@ -106,13 +106,46 @@
     <div class="modal-body">
         <form ngNativeValidate #f="ngForm" (ngSubmit)="crearSnippet(f.value)" class="form-horizontal form-material">
             <div class="form-group">
-                <label class="col-md-12">Nombre de Proyecto</label>
+                <label class="col-md-12">Nombre de Snippet</label>
                 <div class="col-md-12">
                     <input [ngModel]="nombreSnippet" name="nombreSnippet" type="text" placeholder="Ingrese el nombre del Snippet" class="form-control" required>
                 </div>
-                <label class="col-md-12">Tipo de proyecto</label>
+                <label class="col-md-12">Tipo de Snippet</label>
                 <div class="col-md-12">
-                    <input [ngModel]="tipoSnippet" name="tipoSnippet" type="text" placeholder="Ingrese el tipo de Snippet, ej: javascript, php, html...." class="form-control" required>
+                    <select [ngModel]="tipoSnippet" name="tipoSnippet" class="custom-select">
+                    <option ngValue="cobol">cobol</option>
+                    <option ngValue="csharp">csharp</option>
+                    <option ngValue="css">css</option>
+                    <option ngValue="dart">dart</option>
+                    <option ngValue="django">django</option>
+                    <option ngValue="d">d</option>
+                    <option ngValue="fortran">fortran</option>
+                    <option ngValue="haskell">haskell</option>
+                    <option ngValue="html">html</option>
+                    <option ngValue="java">java</option>
+                    <option ngValue="javascript">javascript</option>
+                    <option ngValue="json">json</option>
+                    <option ngValue="kotlin">kotlin</option>
+                    <option ngValue="lisp">lisp</option>
+                    <option ngValue="markdown">markdown</option>
+                    <option ngValue="mysql">mysql</option>
+                    <option ngValue="objectivec">objectivec</option>
+                    <option ngValue="pascal">pascal</option>
+                    <option ngValue="perl">perl</option>
+                    <option ngValue="php">php</option>
+                    <option ngValue="prolog">prolog</option>
+                    <option ngValue="python">python</option>
+                    <option ngValue="r">r</option>
+                    <option ngValue="ruby">ruby</option>
+                    <option ngValue="rust">rust</option>
+                    <option ngValue="sass">sass</option>
+                    <option ngValue="scss">scss</option>
+                    <option ngValue="sql">sql</option>
+                    <option ngValue="swift">swift</option>
+                    <option ngValue="typescript">typescript</option>
+                    <option ngValue="xml">xml</option>
+                    <option ngValue="text">text</option>
+                   </select>
                 </div>
             </div>
             <div class="form-group">

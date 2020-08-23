@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <h4 class="col-4 text-left">Snippet: {{snippetSeleccionado.nombreSnippet}}</h4>
+                    <div class="col-8 text-right">
+                        <button (click)="ConfirmBorrar()" class="btn btn-outline-danger ti-align-right mr-3">
+                            <i class="far fa-trash-alt"></i><span> Borrar Cambios</span> 
+                        </button>
+                        <button (click)="guardarCambios()" class="btn btn-outline-primary ti-align-right mr-3">
+                            <i class="far fa-save"></i><span> Guardar Cambios</span> 
+                        </button>
+                        <button (click)="descargarSnippet()" class="btn btn-outline-primary ti-align-right">
+                            <i class="fas fa-download"></i><span> Descargar</span> 
+                        </button>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-3">
+                    </div>
+                    <div class="col-6">
+                        <div ace-editor #editor [(text)]="contenido" [mode]="tipo" [theme]="'monokai'" [options]="options" [readOnly]="false" [autoUpdateContent]="true" [durationBeforeCallback]="1000" (textChanged)="onChange($event)" style="min-height: 350px; width:100%; overflow: auto;"></div>
+                    </div>
+                    <div class="col-3">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -39,11 +39,14 @@ export class SideBarComponent implements OnInit {
     });
   }
 
-  mostrarProyecto(id:string){
-    console.log('Proyecto a mostrar', id);
+  mostrarProyecto(proyecto){
+    this._usuarioService.proyectoSeleccionadoAMostrar(proyecto);
+    // console.log('Proyecto a mostrar', proyecto);
   }
-  mostrarSnippet(id:string){
-    console.log('Snippet a mostrar', id);
+  
+  mostrarSnippet(snippet){
+    this._usuarioService.snippetSeleccionadoAMostrar(snippet);
+    // console.log('Snippet a mostrar', id);
   }
  
 }

@@ -18,7 +18,6 @@ export class DashBoardComponent implements OnInit {
   nombreSnippet:string;
   tipoSnippet:string;
   conteo:number;
-
   constructor(
     private modalService:NgbModal,
     private _usuarioService: UsuarioService
@@ -31,6 +30,8 @@ export class DashBoardComponent implements OnInit {
     this.cargarProyectos();
     this.cargarSnippets();
   }
+
+  // Funciones de Proyectos
   verificarPlan(modal){
     var plan= this.usuario.plan;
     var conteo = this.conteo
@@ -77,21 +78,10 @@ export class DashBoardComponent implements OnInit {
           // console.log('Proyetos de usuario', this.proyectos);
         });
   }
-
-  cargarSnippets(){
-    this._usuarioService.cargarSnippets(this.usuario._id)
-    .subscribe(resp=>{
-      this.snippets= resp;
-      // console.log('Snippet de usuario', this.snippets);
-    });
-  }
+  
   mostrarProyecto(proyecto){
     this._usuarioService.proyectoSeleccionadoAMostrar(proyecto);
     // console.log('Proyecto a mostrar', proyecto);
-  }
-  
-  mostrarSnippet(id:string){
-    console.log('Snippet a mostrar', id);
   }
 
   crearProyecto(form){
@@ -109,12 +99,7 @@ export class DashBoardComponent implements OnInit {
       this.modalService.dismissAll();
   }
 
-  crearSnippet(form){
-    console.log(form);
-    this.modalService.dismissAll();
-  }
-
-  ConfirmDemo(id:string,nombre:string) {
+  ConfirmProyecto(id:string,nombre:string) {
     var mensaje = confirm(`¿Realmente deseas eliminar ${nombre}?`);
     if (mensaje) {
       this.eliminarProyecto(id)
@@ -125,7 +110,7 @@ export class DashBoardComponent implements OnInit {
   }
 
   eliminarProyecto(id:string){
-    console.log(id);
+    // console.log(id);
     this._usuarioService.eliminarProyecto(id)
         .subscribe(resp=>{
           this.cargarProyectos();
@@ -133,9 +118,52 @@ export class DashBoardComponent implements OnInit {
           alert('Proyecto eliminado');
         })
   }
+
+  // Funciones de Snippet
+  mostrarSnippet(snippet){
+    this._usuarioService.snippetSeleccionadoAMostrar(snippet);
+    // console.log('Snippet a mostrar', id);
+  }
+
+  cargarSnippets(){
+    this._usuarioService.cargarSnippets(this.usuario._id)
+    .subscribe(resp=>{
+      this.snippets= resp;
+      // console.log('Snippet de usuario', this.snippets);
+    });
+  }
+
+  crearSnippet(form){
+    var snippet:any = {
+      'nombreSnippet': form.nombreSnippet,
+      'tipo': form.tipoSnippet,
+      'contenido': ''
+    }
+    this._usuarioService.crearSnippet(snippet)
+      .subscribe(resp=>{
+        // console.log(resp);
+        this.cargarSnippets();
+      })
+    this.modalService.dismissAll();
+  }
+ 
+  ConfirmSnippet(id:string,nombre:string) {
+    var mensaje = confirm(`¿Realmente deseas eliminar ${nombre}?`);
+    if (mensaje) {
+      this.eliminarSnippet(id)
+    }
+    else {
+    return null;
+    }
+  }
+
   eliminarSnippet(id:string){
-    // console.log(id);
-    
+    this._usuarioService.eliminarSnippet(id)
+        .subscribe(resp=>{
+          this.cargarSnippets();
+          // console.log(resp);
+          alert('Snippet eliminado');
+        })
   }
 
 }

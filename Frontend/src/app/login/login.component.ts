@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   recuerdame: boolean=false;
   email:string;
   auth2: any;
+  error=this._usuarioService.errorLogin;
   constructor(
     public router:Router,
     public _usuarioService: UsuarioService
@@ -24,7 +25,6 @@ export class LoginComponent implements OnInit {
     if ( this.email.length>1){
       this.recuerdame=true;
     }
-
   }
   googleInit() {
 
